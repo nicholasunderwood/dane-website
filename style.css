@@ -46,7 +46,7 @@ div.title>img {
   display: block;
   /* height: 100%; */
   flex: 0 1 auto;
-  width: 99%;
+  width: 60%;
 }
 
 .title a {
