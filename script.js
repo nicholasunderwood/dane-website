@@ -11,7 +11,7 @@ function optimizeGrid(width, height, numCells){
 
     }
 
-    return numCells;
+    return 5;
 }
 
 function loadGrid(){
@@ -21,8 +21,9 @@ function loadGrid(){
     const win = $('#content');
     const w = win.width();
     const h = win.height();
-    console.log('h: ' + h)
-    cols = optimizeGrid(w,h,numCells)-1
+    console.log('h: ' + h);
+    // return;
+    cols = optimizeGrid(w,h,numCells)
     console.log('cols: ' + cols);
     const cellWidth = Math.floor(w / cols)
     const cellHeight = cellWidth * cellRatio
@@ -104,10 +105,10 @@ $(window).resize(() => {
     // resizeTable();
 });
 
+
 setTimeout(() => {
     loadGrid()
-
-}, 1)
+}, 1);
 // loadGrid();
 
 $('#content table td').each((i,e) => {
