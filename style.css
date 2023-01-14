@@ -16,7 +16,7 @@ html {
 
 body {
   height: 100%;
-  width: 70%;
+  width: 60%;
   margin: 0;
   /* background-image: ; */
   font-family: "Roboto", sans-serif;
@@ -35,16 +35,18 @@ div.title {
   background-color: black;
   align-items: center;
   justify-content: center;
-  /* height: 15em; */
+  height: 15em;
   padding: 0 0em;
-  margin: 5em 0 2em 0;
+  margin: 4em 0 2em 0;
+  max-height: 5em;
 }
 
 div.title>img {
   /* display: block; */
   /* flex: 1 10 auto; */
-  /* height: 100%; */
-  width: calc(100% - 8em)
+  max-height: 100%;
+  object-fit: contain;
+  max-width: calc(100% - 8em)
 }
 
 .title a {
