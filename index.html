@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+
+<head>
+  <link rel="stylesheet" href="bootstrap.min.css">
+  <link rel="stylesheet" href="./style.css">
+  <script src="bootstrap.min.js"></script>
+  <title>Dane Hohmeyer</title>
+  <meta name="viewport">
+  <meta name="description" content="Artisitc Musings for Coastal Organisms">
+</head>
+</body>
+<div class="title">
+  <img src="./imgs/vignettegif.gif" alt="Dane Hohmeyer">
+</div>
+<main>
+  <div id="about" class="my-2">
+    <div id="bio">
+      If you want to do a shorter bio it should probably be at least this long or longer,
+      because a shorter one would require a comically large font size to make it fit.
+    </div>
+
+    <div id="links">
+      <a href="mailto:danehohmeyer@gmail.com">
+        <img src="./imgs/gmail.png">
+      </a>
+      <a href="https://www.instagram.com/danehohmeyer/">
+        <img src="./imgs/instagram.png">
+      </a>
+    </div>
+  </div>
+  <div id="filter" class="btn-toolbar justify-content-between w-100 my-3" role="toolbar">
+    <div class="btn-group" role="group" aria-label="First group">
+      <button id="1" type="button" class="btn btn-outline-secondary">Video Projects</button>
+      <button id="2" type="button" class="btn btn-outline-secondary">Audio Projects</button>
+      <button id="3" type="button" class="btn btn-outline-secondary">Eposdic Projects</button>
+      <button id="4" type="button" class="btn btn-secondary">All</button>
+    </div>
+
+        <div class="input-group">
+            <div class="input-group-text" id="btnGroupAddon2">@</div>
+            <input type="text" class="form-control" placeholder="Input group example" aria-label="Input group example" aria-describedby="btnGroupAddon2">
+          </div>
+    </div>
+    <div id="content" class="w-100">
+    </div>
+  </div>
+  <div id="content" class="w-100">
+    <table class="w-100">
+    </table>
+  </div>
+</main>
+
+<div class="modal fade" id="content-player" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content" style="color: black;">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Content Title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/n__GJuqLb00" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <p>
+                Theses modals are really nice<br>
+                You can put whatever you want in them<br>
+                And they will be centered<br>
+                And they will be scrollable<br>
+                And they will be resizable<br>
+                And they will be closable<br>
+                If you want to add like a content discription you can just add text under the modal<br>
+                Or like the film analog to a dev log where you can talk about the project<br>
+                idk<br>
+                im going to add some extra spaces to see how it behaves with extra text<br>
+                <br><br><br><br><br><br>
+                pretty sexy huh?
+            </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script src="../jquery-3.3.1.js"></script>
+<script src="./config.js"></script>
+<script defer src="./script.js"></script>
+</body>
