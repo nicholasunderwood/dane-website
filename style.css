@@ -53,7 +53,7 @@ div.title>img {
   display: block;
   /* height: 100%; */
   flex: 0 0 auto;
-  width: 6em;
+  width: 4em;
 }
 
 .title a>img {
