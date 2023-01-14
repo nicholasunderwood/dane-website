@@ -12,6 +12,7 @@ html {
   margin: 0;
   width: 100%;
   height: 100%;
+
 }
 
 body {
@@ -38,7 +39,7 @@ div.title {
   height: 15em;
   padding: 0 0em;
   margin: 4em 0 2em 0;
-  max-height: 5em;
+  max-height: 8em;
 }
 
 div.title>img {
@@ -107,8 +108,13 @@ main {
   gap: 0;
 }
 
+#padding {
+  flex: 1 1 100%;
+}
+
 #content .cell {
   overflow: hidden;
+  cursor: pointer;
 }
 
 #content .hidden img {

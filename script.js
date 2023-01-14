@@ -19,32 +19,44 @@ function loadGrid(){
     table.empty();
 
     const win = $('#content');
+    const pad = $('#padding');
     const w = win.width();
-    const h = win.height();
+    const h = win.height() + pad.height();
     // console.log('h: ' + h);
     // return;
     cols = optimizeGrid(w,h,numCells)
     console.log('cols: ' + cols);
     const cellWidth = Math.floor(w / cols)
     const cellHeight = cellWidth * cellRatio
-    let img_names = imgs.concat(imgs).sort(() => Math.random() > 0.5 ? 1 : -1)
-
-
-    for(let i = 0; i < numCells; i++) {
-        let src = `./thumbnails/${img_names[i]}.jpg`;
-        let cell = $(`<div class='cell'><img src=${src} width='${cellWidth}px' height='${cellHeight}px'></div>`)
-            // .css('width', cellHeight + 'px')
-            // .css('max-height', Math.floor(w / cols * cellHeight) + 'px');
-
-        cell.on('click', (e) => {
-            e.preventDefault();
-            modal.modal('show');
+    
+    
+    if(hasLoadedImages){
+        $('#content .cell img').attr({
+            width: cellWidth + 'px',
+            height: cellHeight + 'px'
         });
+    } else {
+        let img_names = imgs.concat(imgs).sort(() => Math.random() > 0.5 ? 1 : -1)
+    
+    
+        for(let i = 0; i < numCells; i++) {
+            let src = `./thumbnails/${img_names[i]}.jpg`;
+            let cell = $(`<div class='cell'><img src=${src} width='${cellWidth}px' height='${cellHeight}px'></div>`)
+                // .css('width', cellHeight + 'px')
+                // .css('max-height', Math.floor(w / cols * cellHeight) + 'px');
+    
+            cell.on('click', (e) => {
+                e.preventDefault();
+                modal.modal('show');
+            });
+    
+            win.append(cell);
+        }
+        
+        hasLoadedImages = true;
+        win.css('flex', '0 1 auto');
 
-        win.append(cell);
     }
-
-    win.css('flex', '0 1 auto');
 
 
 }
@@ -72,10 +84,11 @@ function resizeTable() {
 
 }
 
-let table = $('#content table');
+const table = $('#content table');
 const numCells = 16;
 const cellRatio = 9 / 16;
 var cols = 0;
+var hasLoadedImages = false;
 const modal = $('#content-player');
 const projects = [];
 const imgs = ['IMG_0667', 'IMG_0668', 'IMG_0671', 'IMG_0672', 'IMG_0674', 'IMG_0675', 'IMG_0678', 'IMG_0680']
@@ -104,12 +117,12 @@ $('#filter button').click((e) => {
 
 
 $(window).resize(() => {
-    // resizeTable();
+    loadGrid()
 });
 
 
 setTimeout(() => {
-    loadGrid();
+    // loadGrid();
 
     console.log($('#content .cell'));
 
