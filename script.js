@@ -122,7 +122,7 @@ $(window).resize(() => {
 
 
 setTimeout(() => {
-    // loadGrid();
+    loadGrid();
 
     console.log($('#content .cell'));
 
