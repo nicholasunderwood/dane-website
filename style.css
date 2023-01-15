@@ -117,7 +117,12 @@ main {
   cursor: pointer;
 }
 
-#content .hidden img {
+#content .cell img {
+  opacity: 1;
+  transition: 1s;
+}
+
+#content .cell.hidden img {
   opacity: 0;
 }
 
