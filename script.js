@@ -36,63 +36,33 @@ function loadGrid(){
             height: cellHeight + 'px'
         });
     } else {
-        let img_names = imgs.concat(imgs).sort(() => Math.random() > 0.5 ? 1 : -1)
-    
+        projOrder = projects.concat(duplicateProjects ? projects : []).sort(() => Math.random() > 0.5 ? 1 : -1)
     
         for(let i = 0; i < numCells; i++) {
-            let src = `./thumbnails/${img_names[i]}.jpg`;
-            let cell = $(`<div class='cell'><img src=${src} width='${cellWidth}px' height='${cellHeight}px'></div>`)
+            let proj = projOrder[i];
+            let src = `./thumbnails/${projOrder[i].thumbnail}`;
+            let cell = $(
+                `<div class='cell ${proj.type}' id='p${proj.id}'>` +
+                    `<img src=${src} width='${cellWidth}px' height='${cellHeight}px'>` + 
+                `</div>`
+            );
                 // .css('width', cellHeight + 'px')
                 // .css('max-height', Math.floor(w / cols * cellHeight) + 'px');
     
             cell.on('click', (e) => {
                 e.preventDefault();
+
+                console.log(e.currentTarget)
+                loadProject($(e.currentTarget));
                 modal.modal('show');
             });
     
             win.append(cell);
         }
-        
         hasLoadedImages = true;
         win.css('flex', '0 1 auto');
-
     }
-
-
 }
-
-function resizeTable() {
-    console.log('resize');
-    return;
-    const win = $('#content');
-    const w = win.width();
-    const h = win.height();
-    const ratio = w / h;
-    const rows = Math.floor(ratio > 1 ? h / cellRatio : w / cellRatio);
-    let trs = table.find('tr');
-
-    console.log(trs);
-        
-    $('#content table td').each((i,e) => {
-        if(i % rows == 0) {
-            tr = trs.eq(i / rows);
-            $('#content table').append(tr);
-        }
-
-        tr.append(e);
-    });
-
-}
-
-const table = $('#content table');
-const numCells = 16;
-const cellRatio = 9 / 16;
-var cols = 0;
-var hasLoadedImages = false;
-const modal = $('#content-player');
-const projects = [];
-const imgs = ['IMG_0667', 'IMG_0668', 'IMG_0671', 'IMG_0672', 'IMG_0674', 'IMG_0675', 'IMG_0678', 'IMG_0680']
-
 
 $('#filter button').click((e) => {
     console.log(e.target.id);
@@ -110,34 +80,51 @@ $('#filter button').click((e) => {
     } else if(e.target.id === '2') {
         $('#content .cell.audio').removeClass('hidden');
     } else if(e.target.id === '3') {
-        $('#content .cell.episode').removeClass('hidden');
+        $('#content .cell.episodic').removeClass('hidden');
     }
 });
 
+function loadProject(projCell){
+    console.log(projCell)
+    let projID = projCell.attr('id').substring(1);
+    let proj = projects[projID % projects.length];
+    modal.attr('content-type', proj.type);
+    switch (proj.type){
+        case "video":
+            modal.find('.video-wrapper iframe').attr('src', proj.content);
+            break;
+        case "audio":
+            modal.find('.audio-wrapper audio source').attr('src', proj.content);
+            break;
+        case "episodic":
+            proj.content.forEach(v => {
 
+            })
+            break;
+    }
+    modal.find('.modal-header').text(proj.name);
+    modal.find('#desc').html(proj.description);
+}
+
+const table = $('#content table');
+const duplicateProjects = true;
+const cellRatio = 9.0 / 16.0;
+var cols = 0;
+var hasLoadedImages = false;
+const modal = $('#content-player');
+const projects = config.projects;
+const numCells = projects.length * (duplicateProjects ? 2 : 1);
+
+$(window).ready(() => {
+    console.log("window ready")
+    
+    loadGrid();
+    
+})
 
 $(window).resize(() => {
     loadGrid()
 });
 
-
-setTimeout(() => {
-    loadGrid();
-
-    console.log($('#content .cell'));
-
-    $('#content .cell').each((i,e) => {
-        e = $(e);
-        if(i%7 === 0 || i%7 === 3 || i%5 === 0) {
-            e.addClass('video');
-        } else if(i%4 === 0 || i%4 === 2) {
-            e.addClass('audio');
-        } else {
-            e.addClass('episode');
-        }
-    
-    });
-    
-}, 1);
 // loadGrid();
 

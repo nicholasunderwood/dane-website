@@ -28,11 +28,11 @@
     <div class="btn-group btn-group-lg" role="group" aria-label="First group">
       <button id="1" type="button" class="btn btn-outline-secondary">Video</button>
       <button id="2" type="button" class="btn btn-outline-secondary">Audio</button>
-      <button id="3" type="button" class="btn btn-outline-secondary">Eposdic</button>
+      <button id="3" type="button" class="btn btn-outline-secondary">Episodic</button>
       <button id="4" type="button" class="btn btn-secondary">All</button>
     </div>
     
-    <div class="input-group">
+    <div class="input-group input-group-lg">
       <div class="input-group-text" id="btnGroupAddon2">@</div>
       <input type="text" class="form-control form-control-lg" placeholder="Search" aria-label="Search" aria-describedby="btnGroupAddon2">
     </div>
@@ -44,15 +44,48 @@
 </main>
 
 <div class="modal fade" id="content-player" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+  <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
     <div class="modal-content" style="color: black;">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Content Title</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/n__GJuqLb00" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        <p>
+
+        <div class="content-wrapper video-wrapper" >
+          <iframe width="560" height="315" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+        </div>
+        <div class="content-wrapper audio-wrapper">
+          <audio controls>
+            <source src="" type="audio/ogg">
+            Your browser does not support the audio tag.
+          </audio>
+
+        </div>
+        <div id="carouselExampleIndicators" class="carousel slide content-wrapper episodic-wrapper" data-bs-interval="false">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          </div>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <iframe width="560" height="315" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+        
+
+        <div id="desc">
           Theses modals are really nice<br>
           You can put whatever you want in them<br>
           And they will be centered<br>
@@ -65,7 +98,7 @@
           im going to add some extra spaces to see how it behaves with extra text<br>
           <br><br><br><br><br><br>
           pretty sexy huh?
-        </p>
+        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

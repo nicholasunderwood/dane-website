@@ -120,6 +120,7 @@ main {
 #content .cell img {
   opacity: 1;
   transition: 1s;
+  transition-property: opacity;
 }
 
 #content .cell.hidden img {
@@ -127,5 +128,40 @@ main {
 }
 
 .modal-dialog {
-  max-width: 592px;
+  /* max-width: 592px; */
+}
+
+.modal audio {
+  width: 100%;
+}
+
+.modal .content-wrapper {
+  display: none;
+}
+
+.modal[content-type="video"] .video-wrapper{
+  display: block;
+}
+
+.modal[content-type="audio"] .audio-wrapper{
+  display: block;
+}
+
+.modal[content-type="episodic"] .episodic-wrapper{
+  display: block;
+}
+
+.video-wrapper {
+  margin: 0 auto;
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  height: 0;
+}
+
+.video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
